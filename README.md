@@ -1,5 +1,7 @@
 # Static Files (Simple Webserver + StackPHP Middleware)
 
+[![Build Status](https://travis-ci.org/phramz/staticfiles.svg)](https://travis-ci.org/phramz/staticfiles)
+
 `StaticFiles` acts like a simple webserver that serves static files from a local directory.
 It comes both `Phramz\Staticfiles\Application` to run stand-alone and `Phramz\Staticfiles\Middleware`
 to be used as StackPHP middelware. 
