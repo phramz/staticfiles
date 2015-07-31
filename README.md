@@ -1,6 +1,6 @@
 # Static Files 
 
-[![Build Status](https://travis-ci.org/phramz/staticfiles.svg)](https://travis-ci.org/phramz/staticfiles)
+[![Build Status](https://travis-ci.org/phramz/staticfiles.svg)](https://travis-ci.org/phramz/staticfiles) [![SensioLabsInsight](https://insight.sensiolabs.com/projects/deacb52b-9487-4fd7-9924-9c23e2825ba6/mini.png)](https://insight.sensiolabs.com/projects/deacb52b-9487-4fd7-9924-9c23e2825ba6)
 
 `StaticFiles` acts like a simple webserver that serves static files from a local directory.
 It comes with both `Phramz\Staticfiles\Application` to run stand-alone and `Phramz\Staticfiles\Middleware`
