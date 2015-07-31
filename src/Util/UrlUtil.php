@@ -1,7 +1,6 @@
 <?php
 namespace Phramz\Staticfiles\Util;
 
-
 class UrlUtil
 {
     /**

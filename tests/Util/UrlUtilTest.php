@@ -1,5 +1,6 @@
 <?php
 namespace Phramz\Staticfiles\Tests\Util;
+
 use Phramz\Staticfiles\Util\UrlUtil;
 
 /**
