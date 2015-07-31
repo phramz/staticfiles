@@ -1,4 +1,5 @@
-# Static Files (Simple Webserver + StackPHP Middleware)
+# Static Files 
+## (Simple Webserver + StackPHP Middleware)
 
 [![Build Status](https://travis-ci.org/phramz/staticfiles.svg)](https://travis-ci.org/phramz/staticfiles)
 
