@@ -3,7 +3,6 @@ namespace Phramz\Staticfiles\Tests;
 
 use Phramz\Staticfiles\Application;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 /**
  * @covers Phramz\Staticfiles\Application
