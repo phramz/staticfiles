@@ -2,6 +2,8 @@
 namespace Phramz\Staticfiles\Tests;
 
 use Phramz\Staticfiles\Middleware;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 /**
@@ -16,7 +18,7 @@ class MiddlewareTest extends AbstractTestCase
 
     protected function setUp()
     {
-        $this->mockApp = $this->getMockBuilder('Symfony\Component\HttpKernel\HttpKernelInterface')
+        $this->mockApp = $this->getMockBuilder('Phramz\Staticfiles\Tests\Mock\TerminableHttpKernelInterface')
             ->getMockForAbstractClass();
     }
 
@@ -99,5 +101,18 @@ class MiddlewareTest extends AbstractTestCase
         } else {
             $this->assertEquals(404, $response->getStatusCode());
         }
+    }
+
+    public function testTerminate()
+    {
+        $request = new Request();
+        $response = new Response();
+
+        $app = new Middleware($this->mockApp, '/');
+        $this->mockApp->expects($this->once())
+            ->method('terminate')
+            ->with($request, $response);
+
+        $app->terminate($request, $response);
     }
 }

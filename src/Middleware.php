@@ -4,6 +4,7 @@ namespace Phramz\Staticfiles;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
+use Symfony\Component\HttpKernel\TerminableInterface;
 
 class Middleware extends Application
 {
@@ -55,5 +56,17 @@ class Middleware extends Application
         }
 
         return $response;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function terminate(Request $request, Response $response)
+    {
+        parent::terminate($request, $response);
+
+        if ($this->app instanceof TerminableInterface) {
+            $this->app->terminate($request, $response);
+        }
     }
 }
