@@ -46,6 +46,11 @@ class Middleware extends Application
         $response = parent::handle($request, $type, $catch);
 
         if ($this->ignoreNotFound && $response->getStatusCode() == Response::HTTP_NOT_FOUND) {
+            $this->logger->debug(
+                'passing request to the next app, due to 404 response',
+                ['uri' => $request->getRequestUri()]
+            );
+
             return $this->app->handle($request, $type, $catch);
         }
 
