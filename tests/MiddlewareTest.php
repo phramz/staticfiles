@@ -18,7 +18,7 @@ class MiddlewareTest extends AbstractTestCase
 
     protected function setUp()
     {
-        $this->mockApp = $this->getMockBuilder('Phramz\Staticfiles\Tests\Mock\TerminableHttpKernelInterface')
+        $this->mockApp = $this->getMockBuilder('Phramz\Staticfiles\Tests\Mock\AbstractTerminableHttpKernel')
             ->getMockForAbstractClass();
     }
 
