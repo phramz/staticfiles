@@ -1,4 +1,4 @@
-# Static Files Stack Middleware
+# Static Files (Simple Webserver + StackPHP Middleware)
 
 `StaticFiles` acts like a simple webserver that serves static files from a local directory.
 It comes both `Phramz\Staticfiles\Application` to run stand-alone and `Phramz\Staticfiles\Middleware`
@@ -9,18 +9,15 @@ to be used as StackPHP middelware.
 Install with Composer:
 
 ```bash
-
 $ curl -sS https://getcomposer.org/installer | php
 $ php composer.phar require phramz/staticfiles
-
 ```
 
 ## Example
 
-The first example shows how to use `StaticFiles` as standalone application.
+The first example shows how to use StaticFiles as standalone application.
 
 ```php
-
 <?php
 
 use Symfony\Component\HttpFoundation\Request;
@@ -32,10 +29,7 @@ $webroot = '/var/www';
 $defaultMimetype = 'application/octed-stream';
 
 // files with the following extensions will not be delivered. We'll get a 404 instead.
-$exclude = [
-    'php',
-    'key'
-];
+$exclude = ['php', 'key'];
 
 // let's build our application
 $app = new Phramz\Staticfiles\Application($webroot, $defaultMimetype, $exclude);
@@ -48,13 +42,11 @@ $response->send();
 
 // and shutdown
 $app->terminate($request, $response);
-
 ```
 
 Now, you may also use it as middleware with StackPHP.
 
 ```php
-
 <?php
 
 use Symfony\Component\HttpFoundation\Request;
@@ -66,10 +58,7 @@ $webroot = '/var/www';
 $defaultMimetype = 'application/octed-stream';
 
 // files with the following extensions will not be delivered. We'll get a 404 instead.
-$exclude = [
-    'php',
-    'key'
-];
+$exclude = ['php', 'key'];
 
 // if true requests to non existing ressources will be passed to the next app in stack.
 // if false the middleware will return a 404 response
@@ -97,7 +86,6 @@ $response->send();
 
 // and shutdown
 $app->terminate($request, $response);
-
 ```
 
 ## LICENSE
