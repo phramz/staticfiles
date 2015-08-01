@@ -23,11 +23,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Phramz\\Staticfiles\\": "src/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
+      "Phramz\\Staticfiles\\": "src/",
       "Phramz\\Staticfiles\\Tests\\": "tests/"
     }
   }
