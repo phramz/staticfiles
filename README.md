@@ -2,9 +2,8 @@
 
 [![Build Status](https://travis-ci.org/phramz/staticfiles.svg)](https://travis-ci.org/phramz/staticfiles) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/phramz/staticfiles/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/phramz/staticfiles/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/phramz/staticfiles/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/phramz/staticfiles/?branch=master) [![SensioLabsInsight](https://insight.sensiolabs.com/projects/deacb52b-9487-4fd7-9924-9c23e2825ba6/mini.png)](https://insight.sensiolabs.com/projects/deacb52b-9487-4fd7-9924-9c23e2825ba6)
 
-`StaticFiles` acts like a simple webserver that serves static files from a local directory.
-It comes with both `Phramz\Staticfiles\Application` to run stand-alone and `Phramz\Staticfiles\Middleware`
-to be used as StackPHP middelware. 
+Staticfiles `HttpServer` acts like a simple webserver that serves static files from a local directory.
+
 
 ## Install
 
@@ -17,7 +16,7 @@ $ php composer.phar require phramz/staticfiles
 
 ## Example
 
-The first example shows how to use StaticFiles as standalone application.
+The first example shows how to use Staticfiles as standalone application.
 
 ```php
 <?php
@@ -34,51 +33,7 @@ $defaultMimetype = 'application/octed-stream';
 $exclude = ['php', 'key'];
 
 // let's build our application
-$app = new Phramz\Staticfiles\Application($webroot, $defaultMimetype, $exclude);
-
-// dispatch the request
-$request = Request::createFromGlobals();
-
-$response = $app->handle($request);
-$response->send();
-
-// and shutdown
-$app->terminate($request, $response);
-```
-
-Now, you may also use it as middleware with StackPHP.
-
-```php
-<?php
-
-use Symfony\Component\HttpFoundation\Request;
-
-// your static files will be served from this folder
-$webroot = '/var/www';
-
-// if we cannot guess the files mime-type we'll use this default
-$defaultMimetype = 'application/octed-stream';
-
-// files with the following extensions will not be delivered. We'll get a 404 instead.
-$exclude = ['php', 'key'];
-
-// if true requests to non existing ressources will be passed to the next app in stack.
-// if false the middleware will return a 404 response
-$ignoreNotFound = true;
-
-// create your application ... whatever it is e.g. Silex, Symfony2 etc.
-$app = new Application();
-
-// build the stack
-$app = (new Stack\Builder())
-    ->push(
-        'Phramz\Staticfiles\Middleware', 
-        $webroot, 
-        $defaultMimetype, 
-        $exclude,
-        $ignoreNotFound
-    )
-    ->resolve($app);
+$app = new Phramz\Staticfiles\HttpServer($webroot, $defaultMimetype, $exclude);
 
 // dispatch the request
 $request = Request::createFromGlobals();

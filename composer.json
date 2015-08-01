@@ -2,7 +2,7 @@
   "name": "phramz/staticfiles",
   "license": "MIT",
   "type": "library",
-  "keywords": ["staticfiles", "stack", "stackphp", "middleware", "webserver"],
+  "keywords": ["staticfiles", "stack", "webserver"],
   "description": "This library will serve static files from a local directory",
   "authors": [
     {
@@ -12,8 +12,6 @@
   ],
   "require": {
     "php": ">=5.5.9",
-    "symfony/http-foundation": "~2.1",
-    "symfony/http-kernel": "~2.1",
     "webmozart/path-util": "~2.1",
     "psr/log": "~1.0"
   },

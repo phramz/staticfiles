@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\TerminableInterface;
 
-class Application implements HttpKernelInterface, TerminableInterface, LoggerAwareInterface
+class HttpServer implements HttpKernelInterface, TerminableInterface, LoggerAwareInterface
 {
     /**
      * @var array

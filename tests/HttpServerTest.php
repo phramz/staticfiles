@@ -1,19 +1,19 @@
 <?php
 namespace Phramz\Staticfiles\Tests;
 
-use Phramz\Staticfiles\Application;
+use Phramz\Staticfiles\HttpServer;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @covers Phramz\Staticfiles\Application
+ * @covers Phramz\Staticfiles\HttpServer
  */
-class ApplicationTest extends AbstractTestCase
+class HttpServerTest extends AbstractTestCase
 {
     public function testConstruct()
     {
         $this->assertInstanceOf(
             'Symfony\Component\HttpKernel\HttpKernelInterface',
-            new Application('/')
+            new HttpServer('/')
         );
     }
 
@@ -22,7 +22,7 @@ class ApplicationTest extends AbstractTestCase
      */
     public function testConstructNonExistingWebroot()
     {
-        new Application(__DIR__ . '/this-folder-does-not-exist');
+        new HttpServer(__DIR__ . '/this-folder-does-not-exist');
     }
 
     /**
@@ -38,7 +38,7 @@ class ApplicationTest extends AbstractTestCase
             ->method('getRequestUri')
             ->will($this->returnValue($uri));
 
-        $app = new Application(__DIR__ . '/fixtures', 'default', ['someext']);
+        $app = new HttpServer(__DIR__ . '/fixtures', 'default', ['someext']);
 
         $response = $app->handle($mockRequest);
 
