@@ -38,7 +38,7 @@ class HttpServerTest extends AbstractTestCase
             ->method('getRequestUri')
             ->will($this->returnValue($uri));
 
-        $app = new HttpServer(__DIR__ . '/fixtures', 'default', ['someext']);
+        $app = new HttpServer(static::getFixturesDirectory(), 'default', ['someext']);
 
         $response = $app->handle($mockRequest);
 

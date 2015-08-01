@@ -5,7 +5,12 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
 {
     protected static function fixture($path)
     {
-        return file_get_contents(__DIR__ . '/fixtures/' . $path);
+        return file_get_contents(static::getFixturesDirectory() . $path);
+    }
+
+    protected static function getFixturesDirectory()
+    {
+        return __DIR__ . '/fixtures/';
     }
 
     public function handleDataProvider()
